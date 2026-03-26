@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <svg class="logo-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4A90D9" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="2" x2="12" y2="6"/>
+        <line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="6" y2="12"/>
+        <line x1="18" y1="12" x2="22" y2="12"/>
+      </svg>
+      <div class="logo-title">
+        <span class="logo-text">TechProfiler</span>
+        <a href="https://www.syftdata.com" target="_blank" class="logo-byline">by Syft</a>
+      </div>
+      <button id="settingsBtn" class="settings-btn" title="Settings">&#9881;</button>
+    </div>
+    <div class="site-info" id="siteInfo">
+      <img id="siteFavicon" class="site-favicon" src="" alt="" />
+      <span id="siteHostname"></span>
+    </div>
+  </div>
+
+  <div id="settings" class="settings" style="display:none">
+    <div class="settings-row">
+      <label for="apiKeyInput">Claude API Key</label>
+      <input type="password" id="apiKeyInput" placeholder="sk-ant-..." />
+    </div>
+    <div class="settings-row">
+      <span class="settings-hint">AI-enhanced detection sends script URLs &amp; inline snippets to Claude API for deeper analysis</span>
+    </div>
+    <div class="settings-divider"></div>
+    <div class="profiles-header">
+      <span class="profiles-title">Fit Profiles</span>
+      <button id="addProfileBtn" class="add-profile-btn">+ Add</button>
+    </div>
+    <div id="profilesList"></div>
+    <div id="profileForm" style="display:none">
+      <div class="settings-row">
+        <label for="profileNameInput">Profile Name</label>
+        <input type="text" id="profileNameInput" placeholder="e.g. HubSpot Users" />
+      </div>
+      <div class="settings-row">
+        <label for="profilePromptInput">Matching Prompt</label>
+        <textarea id="profilePromptInput" placeholder="e.g. Uses HubSpot or any HubSpot product"></textarea>
+      </div>
+      <div class="profile-form-actions">
+        <button id="profileSaveBtn" class="profile-save-btn">Save</button>
+        <button id="profileCancelBtn" class="profile-cancel-btn">Cancel</button>
+      </div>
+    </div>
+    <div id="profileApiHint" class="settings-hint" style="display:none">
+      Set a Claude API Key to enable profile matching.
+    </div>
+  </div>
+
+  <div id="fitResults" class="fit-results" style="display:none"></div>
+
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    <span>Scanning...</span>
+  </div>
+
+  <div id="error" class="error" style="display:none">
+    <p id="errorMsg">Cannot scan this page.</p>
+  </div>
+
+  <div id="empty" class="empty" style="display:none">
+    <p>No technologies detected.</p>
+  </div>
+
+  <div id="results" class="results" style="display:none"></div>
+
+  <div class="footer">
+    <span id="techCount"></span>
+    <button id="rescanBtn" class="rescan-btn" title="Re-scan page">&#8635;</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
